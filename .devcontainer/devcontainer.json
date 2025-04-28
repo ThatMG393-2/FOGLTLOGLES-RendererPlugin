@@ -7,8 +7,19 @@
       "installGradle": true
     },
     "ghcr.io/nordcominc/devcontainer-features/android-sdk:1": {
-      "platform": "32",
-      "build_tools": "32.0.0"
+      "platform": "34",
+      "build_tools": "34.0.0"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "adelphes.android-dev-ext",
+        "vscjava.vscode-gradle",
+        "naco-siren.gradle-language",
+        "redhat.java",
+        "vscjava.vscode-java-dependency"
+      ]
     }
   }
 }

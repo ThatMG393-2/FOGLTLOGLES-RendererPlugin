@@ -1,1 +1,12 @@
+[versions]
+# libraries
+androidxAppCompat = "1.7.0"
 
+# plugins
+androidGradlePlugin = "8.11.0-alpha07"
+
+[libraries]
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "androidxAppCompat" }
+
+[plugins]
+android-gradle-plugin = { id = "com.android.application", version.ref = "androidGradlePlugin" }
