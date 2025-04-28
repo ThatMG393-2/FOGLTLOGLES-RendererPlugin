@@ -1,0 +1,14 @@
+{
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "features": {
+    "ghcr.io/devcontainers/features/java:1": {
+      "jdkDistro": "graal",
+      "version": "21.0.7",
+      "installGradle": true
+    },
+    "ghcr.io/nordcominc/devcontainer-features/android-sdk:1": {
+      "platform": "32",
+      "build_tools": "32.0.0"
+    }
+  }
+}
