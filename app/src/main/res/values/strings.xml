@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">FOGLTLOGLES</string>
+    
+    <string name="hello">Hello FOGLE user!</string>
 </resources>
