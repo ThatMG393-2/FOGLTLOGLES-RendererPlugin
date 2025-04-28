@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "com.thatmg393.fogle.rendererplugin"
+    namespace = "com.fcl.plugin.thatmg393.fogle"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.thatmg393.fogle.rendererplugin"
+        applicationId = "com.fcl.plugin.thatmg393.fogle"
         minSdk = 26
         targetSdk = 34
         versionCode = 1
