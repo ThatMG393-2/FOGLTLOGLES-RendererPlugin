@@ -21,15 +21,20 @@ android {
 
         configureEach {
             manifestPlaceholders["des"] = "Fast OpenGL Translation Layer (to) OpenGL ES"
-            manifestPlaceholders["renderer"] = "FOGLTLOGLES:libFOGLTLOGLES.so:libFOGLTLOGLES.so"
-            manifestPlaceholders["pojavEnv"] = mutableMapOf<String, String>().apply { }.run {
+            manifestPlaceholders["renderer"] = "FOGLTLOGLES:libFOGLTLOGLES.so:libEGL.so"
+            manifestPlaceholders["pojavEnv"] = mutableMapOf<String, String>().apply {
+                put("LIBGL_ES", "3")
+            }.run {
                 var env = ""
                 forEach { (key, value) ->
                     env += "$key=$value:"
                 }
                 env.dropLast(1)
             }
-            manifestPlaceholders["boatEnv"] = mutableMapOf<String, String>().apply { }.run {
+            manifestPlaceholders["boatEnv"] = mutableMapOf<String, String>().apply {
+                put("LIBGL_ES", "3")
+                put("POJAV_RENDERER", "opengles3")
+            }.run {
                 var env = ""
                 forEach { (key, value) ->
                     env += "$key=$value:"
