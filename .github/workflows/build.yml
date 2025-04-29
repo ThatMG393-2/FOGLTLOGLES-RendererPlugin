@@ -1,8 +1,16 @@
 name: Build Plugin
-on: push
+on:
+  push:
+  workflow_run:
+    workflows: ["Update FOGLTLOGLES"]
+    types:
+      - completed
 
 jobs:
   build:
+    permissions:
+      id-token: write
+    
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
