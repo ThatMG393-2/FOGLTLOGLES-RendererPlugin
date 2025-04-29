@@ -32,7 +32,7 @@ android {
         }
 
         configureEach {
-            manifestPlaceholders["des"] = "FOGLTLOGLES (OpenGL 4.x, Fast[?]) (OpenGL ES 3.2 only)"
+            manifestPlaceholders["des"] = "FOGLTLOGLES (OpenGL 4.x, 1.17+) (OpenGL ES 3.2 only)"
             manifestPlaceholders["renderer"] = "FOGLTLOGLES:libFOGLTLOGLES.so:libEGL.so"
             manifestPlaceholders["pojavEnv"] = mutableMapOf<String, String>().apply {
                 put("LIBGL_ES", "3")
