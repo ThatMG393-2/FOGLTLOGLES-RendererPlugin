@@ -1,5 +1,6 @@
 name: Build Plugin
 on:
+  workflow_dispatch:
   push:
     paths-ignore:
       - '**.md'
@@ -40,7 +41,7 @@ jobs:
           ndk-version: r28b
 
       - name: Validate GradleW
-        uses: gradle/actions/wrapper-validation@v3
+        uses: gradle/actions/wrapper-validation@v4
 
       - name: Build
         run: |
