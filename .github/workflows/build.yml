@@ -18,10 +18,14 @@ jobs:
           java-version: '17'
           cache: 'gradle'
 
-      - name: Install NDK 28
-        run: |
-          echo "y" | sdkmanager "ndk;28.0.13004108"
-          echo "ndk.dir=$ANDROID_HOME/ndk/28.0.13004108" >> local.properties
+      - name: Install CCache
+        uses: Chocobo1/setup-ccache-action@v1
+        with:
+          override_cache_key: ccache-FOGLTLOGLES-RendererPlugin-cache
+
+      - uses: nttld/setup-ndk@v1
+        with:
+          ndk-version: r28b
 
       - name: Validate GradleW
         uses: gradle/actions/wrapper-validation@v3

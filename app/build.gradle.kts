@@ -6,7 +6,7 @@ android {
     namespace = "com.fcl.plugin.thatmg393.fogle"
     compileSdk = 34
 
-    ndkVersion = "28.0.13004108"
+    ndkVersion = "28.1.13356709"
 
     defaultConfig {
         applicationId = "com.fcl.plugin.thatmg393.fogle"
