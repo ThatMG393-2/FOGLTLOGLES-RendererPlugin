@@ -1,4 +1,4 @@
-name: Update FOGLTLOGLES submodules
+name: Update FOGLTLOGLES
 on:
   repository_dispatch:
     types: [update-fogle-submod]
@@ -23,5 +23,6 @@ jobs:
       - name: Commit & Push changes
         uses: actions-js/push@master
         with:
+          message: "Update FOGLTLOGLES"
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
