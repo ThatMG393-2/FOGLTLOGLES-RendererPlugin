@@ -32,7 +32,7 @@ jobs:
       - name: Build
         run: |
           bash setup.sh
-          bash gradlew assembleRelease
+          bash gradlew assembleDebug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
