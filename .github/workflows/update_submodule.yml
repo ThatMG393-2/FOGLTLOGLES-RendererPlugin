@@ -1,0 +1,24 @@
+name: Update FOGLTLOGLES submodules
+on:
+  repository_dispatch:
+    types: [update-fogle-submod]
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Update FOGLTLOGLES
+        run: |
+          git submodule update --init --depth=1 --remote
+
+      - name: Commit & Push changes
+        uses: actions-js/push@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
