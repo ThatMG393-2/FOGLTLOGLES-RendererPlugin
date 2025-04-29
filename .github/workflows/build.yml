@@ -1,6 +1,11 @@
 name: Build Plugin
 on:
   push:
+    paths-ignore:
+      - '**.md'
+      - 'update_submodules.yml'
+      - '.vscode/*'
+      - '.devcontainer*/*'
   workflow_run:
     workflows: ["Update FOGLTLOGLES"]
     types:
