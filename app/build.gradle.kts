@@ -15,6 +15,12 @@ android {
         versionCode = 1
         versionName = "0.0.1"
 
+        externalNativeBuild {
+            cmake {
+                arguments += listOf("-DCMAKE_BUILD_TYPE=Release", "-DANDROID_PLATFORM=29")
+            }
+        }
+
         ndk {
             abiFilters += listOf("armeabi-v7a", "arm64-v8a")
         }
@@ -51,8 +57,8 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
 
     packagingOptions {
@@ -63,7 +69,7 @@ android {
 
     externalNativeBuild {
         cmake {
-            path = file("../FOGLTLOGLES/CMKeLists.txt")
+            path = file("../FOGLTLOGLES/CMakeLists.txt")
         }
     }
 }
