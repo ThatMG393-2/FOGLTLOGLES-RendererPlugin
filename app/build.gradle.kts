@@ -6,12 +6,18 @@ android {
     namespace = "com.fcl.plugin.thatmg393.fogle"
     compileSdk = 34
 
+    ndkVersion = "28.0.13004108"
+
     defaultConfig {
         applicationId = "com.fcl.plugin.thatmg393.fogle"
         minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "0.0.1"
+
+        ndk {
+            abiFilters += listOf("armeabi-v7a", "arm64-v8a")
+        }
     }
 
     buildTypes {
@@ -52,6 +58,12 @@ android {
     packagingOptions {
         jniLibs {
             useLegacyPackaging = true
+        }
+    }
+
+    externalNativeBuild {
+        cmake {
+            path = file("../FOGLTLOGLES/CMKeLists.txt")
         }
     }
 }
