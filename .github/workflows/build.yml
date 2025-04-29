@@ -8,7 +8,6 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
-          submodules: true
           fetch-depth: 1
 
       - name: Setup JDK 17
@@ -32,6 +31,7 @@ jobs:
 
       - name: Build
         run: |
+          bash setup.sh
           bash gradlew assembleRelease
 
       - name: Upload APK
