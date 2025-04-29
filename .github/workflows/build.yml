@@ -38,5 +38,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: FOGLTLOGLES-RendererPlugin Build
-          path: app/build/outputs/apk/release/
+          path: app/build/outputs/apk/*/*.apk
 
