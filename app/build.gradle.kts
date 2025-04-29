@@ -36,6 +36,7 @@ android {
             manifestPlaceholders["renderer"] = "FOGLTLOGLES:libFOGLTLOGLES.so:libEGL.so"
             manifestPlaceholders["pojavEnv"] = mutableMapOf<String, String>().apply {
                 put("LIBGL_ES", "3")
+                put("POJAV_RENDERER", "opengles3")
                 // put("DLOPEN", "libSPRIV-Tools-shared.so,libshaderc_shared.so")
             }.run {
                 var env = ""
@@ -46,7 +47,6 @@ android {
             }
             manifestPlaceholders["boatEnv"] = mutableMapOf<String, String>().apply {
                 put("LIBGL_ES", "3")
-                put("POJAV_RENDERER", "opengles3")
                 // put("DLOPEN", "libSPRIV-Tools-shared.so,libshaderc_shared.so")
             }.run {
                 var env = ""
