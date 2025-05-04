@@ -63,7 +63,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
 
-    packagingOptions {
+    packaging {
         jniLibs {
             useLegacyPackaging = true
         }
