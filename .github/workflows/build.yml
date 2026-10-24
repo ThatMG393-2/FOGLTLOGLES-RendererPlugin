@@ -4,7 +4,7 @@ on:
   push:
     paths-ignore:
       - '**.md'
-      - 'update_submodules.yml'
+      - 'scripts/**'
       - '.vscode/*'
       - '.devcontainer*/*'
   workflow_run:
@@ -31,22 +31,16 @@ jobs:
           java-version: '17'
           cache: 'gradle'
 
-      - name: Install CCache
-        uses: Chocobo1/setup-ccache-action@v1
-        with:
-          override_cache_key: ccache-FOGLTLOGLES-RendererPlugin-cache
-
-      - uses: nttld/setup-ndk@v1
-        with:
-          ndk-version: r28b
-
       - name: Validate GradleW
         uses: gradle/actions/wrapper-validation@v4
 
-      - name: Build
+      - name: Check prebuilt libs are present
         run: |
-          bash setup.sh
-          bash gradlew assembleDebug
+          test -n "$(ls app/src/main/jniLibs/arm64-v8a/*.so 2>/dev/null)" || { echo "Run the 'Update FOGLTLOGLES' workflow first"; exit 1; }
+          test -n "$(ls app/src/main/jniLibs/armeabi-v7a/*.so 2>/dev/null)" || { echo "Run the 'Update FOGLTLOGLES' workflow first"; exit 1; }
+
+      - name: Build
+        run: bash gradlew assembleDebug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4

@@ -1,0 +1,43 @@
+name: Update FOGLTLOGLES
+
+on:
+  workflow_dispatch:
+    inputs:
+      run_id:
+        description: "Upstream run id (empty = latest usable run)"
+        required: false
+        default: ""
+  # Sent by upstream FOGLTLOGLES CI after it builds
+  repository_dispatch:
+    types: [update-fogle-submod]
+
+concurrency:
+  group: update-fogle-libs
+  cancel-in-progress: false
+
+jobs:
+  update:
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Fetch prebuilt libraries
+        env:
+          GH_TOKEN: ${{ secrets.FOGLE_TOKEN || secrets.GITHUB_TOKEN }}
+        run: bash scripts/fetch-fogle-libs.sh "${{ github.event.inputs.run_id }}"
+
+      - name: Commit & push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A app/src/main/jniLibs
+          if git diff --cached --quiet; then
+            echo "Libraries unchanged."
+          else
+            git commit -m "Update FOGLTLOGLES libs ($(grep '^commit=' app/src/main/jniLibs/FOGLE_VERSION.txt | cut -c8-14))"
+            git pull --rebase
+            git push
+          fi
